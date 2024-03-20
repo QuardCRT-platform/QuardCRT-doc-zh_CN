@@ -151,7 +151,7 @@
 ## [[V0.2.0](https://github.com/QQxiaoming/quardCRT/releases/tag/V0.2.0)] - 2023-10-18
 
 - 增加使用alt+n/alt+J切换简约/标准UI
-- 增加启动tfftp服务器实用功能
+- 增加启动tftp服务器实用功能
 - 优化hex view显示界面
 - window安装程序增加使用quardCRT打开的系统集成的右键菜单
 - 标签栏右键菜单增加个多个实用功能
