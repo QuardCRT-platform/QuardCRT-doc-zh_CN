@@ -47,25 +47,80 @@ quardCRT的API包括以下几个部分：
 
 `crt`是quardCRT的主要API，包括以下几个部分：
 
-- `crt.Version`：quardCRT的版本信息。
+#### 方法
 
-### crt.Dialog
+- `crt.GetActiveTab() -> object`：获取当前活动的标签页。
+- `crt.GetLastError() -> object`：获取最后一次发生的错误。
+- `crt.GetLastErrorMessage() -> str`：获取最后一次发生的错误信息。
+- `crt.ClearLastError()`：清除最后一次发生的错误。
+- `crt.Sleep(milliseconds: int)`：暂停脚本的执行。
+- `crt.Quit()`：退出quardCRT。
 
-`crt.Dialog`用于显示对话框，包括以下几个方法：
+#### 属性
 
-- `crt.Dialog.MessageBox(message: str, title: str = None, type: int = 0) -> int`：显示一个消息框。
-- `crt.Dialog.InputBox(prompt: str, title: str = None, default: str = None, type: int = 0) -> str`：显示一个输入框。
+- `crt.Dialog`：全局对话框对象。
+- `crt.Session`：当前会话对象。
+- `crt.Screen`：当前屏幕对象。
+- `crt.Window`：全局窗口对象。
+- `crt.ScriptFullName`：当前脚本的完整路径。只读。
+- `crt.ActivePrinter`：当前活动的打印机名称。
+- `crt.Version`：quardCRT的版本信息。只读。
 
-### crt.Session
+### Dialog
 
-`crt.Session`用于管理会话，包括以下几个方法：
+`Dialog`用于显示对话框，包括以下几个部分：
 
-- `crt.Session.Connect(hostname: str, port: int, protocol: int, username: str, password: str) -> bool`：连接到一个主机。
-- `crt.Session.Disconnect()`：断开当前会话。
+#### 方法
 
-### crt.Screen
+- `Dialog.MessageBox(message: str, title: str = None, type: int = 0) -> int`：显示一个消息框。
+- `Dialog.InputBox(prompt: str, title: str = None, default: str = None, type: int = 0) -> str`：显示一个输入框。
+- `Dialog.FileOpenDialog(title: str = None, filter: str = None, initial_dir: str = None) -> str`：显示一个打开文件对话框。
+- `Dialog.FileSaveDialog(title: str = None, filter: str = None, initial_dir: str = None) -> str`：显示一个保存文件对话框。
 
-`crt.Screen`用于管理屏幕，包括以下几个方法：
+#### 属性
 
-- `crt.Screen.Send(text: str)`：发送文本到屏幕。
-- `crt.Screen.WaitForString(text: str, timeout: int) -> int`：等待屏幕出现指定的文本。
+- `Dialog.OK`：确定按钮。只读。
+- `Dialog.Cancel`：取消按钮。只读。
+- `Dialog.Abort`：中止按钮。只读。
+- `Dialog.Retry`：重试按钮。只读。
+- `Dialog.Ignore`：忽略按钮。只读。
+- `Dialog.Yes`：是按钮。只读。
+- `Dialog.No`：否按钮。只读。
+
+### Session
+
+`Session`用于管理会话，包括以下几个部分：
+
+#### 方法
+
+- `Session.Connect(hostname: str, port: int, protocol: int, username: str, password: str) -> bool`：连接到一个主机。
+- `Session.Disconnect()`：断开当前会话。
+
+### Screen
+
+`Screen`用于管理屏幕，包括以下几个部分：
+
+- `Screen.Send(text: str)`：发送文本到屏幕。
+- `Screen.WaitForString(text: str, timeout: int) -> int`：等待屏幕出现指定的文本。
+
+#### 属性
+
+- `Screen.Synchronous`：同步模式。
+
+### Window
+
+`Window`用于管理应用窗口，包括以下几个部分：
+
+#### 方法
+
+- `Window.Activate()`：激活窗口。
+- `Window.Show(type: int)`：显示窗口。
+
+#### 属性
+
+- `Window.State`：当前窗口显示类型。
+- `Window.Active`：当前窗口是否激活。
+- `Window.Hide`：隐藏窗口。只读。
+- `Window.ShowNormal`：正常显示窗口。只读。
+- `Window.ShowMinimized`：最小化窗口。只读。
+- `Window.ShowMaximized`：最大化窗口。只读。
