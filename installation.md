@@ -2,52 +2,60 @@
 
 # 安装
 
-QuardCRT 是一个跨平台的终端模拟器，它支持 Windows、MacOS 和 Linux。如果可能的话，我们首先建议你通过本地平台的官方应用商店安装 QuardCRT。
+quardCRT 提供 Windows、macOS 和 Linux 安装包。如果你的平台有官方应用商店条目，通常这是最简单的安装方式。否则，你可以从 GitHub、Gitee 或 SourceForge 下载发布包。
+
+## 下载前建议
+
+- 如果你只是想安装并使用 quardCRT，选择与你的操作系统和 CPU 架构对应的安装包即可。
+- 如果你打算在 Windows 上构建或加载原生插件，建议优先选择 MSVC 安装包，以便运行时与常见 MSVC 插件工具链保持一致。
+- 如果你使用 Apple Silicon，请选择 macOS 的 `arm64` 安装包。
+- 在 Linux 上，如果你需要便携的单文件启动方式，可选 AppImage；如果你使用 Debian 系发行版并希望交给包管理器管理，可选 `deb` 包。
 
 ## 应用商店
 
-QuardCRT 现在在以下应用商店提供。
+quardCRT 目前可在以下应用商店获取：
 
 - [![Microsoft Store](https://get.microsoft.com/images/zh-cn%20dark.svg)](https://apps.microsoft.com/detail/quardCRT/9p6102k9qb3t?mode=direct)
 - [星火商店](https://www.spark-app.store/store/application/quardcrt)
 - 深度商店
 
-未来会在更多应用商店可用，敬请期待。
-
-当然，你也可以根据你的平台下载对应的安装包。
+如果你的平台或发行版商店未列在这里，请使用下面的发布包安装。
 
 ## 下载
 
 ### 所有平台
 
-如果你想下载 QuardCRT 的最新版本，你可以前往以下链接：
+要下载最新版本，请访问以下发布页：
 
 - [GitHub Releases](https://github.com/QQxiaoming/quardCRT/releases)
 - [Gitee Releases](https://gitee.com/QQxiaoming/quardCRT/releases)
 - [SourceForge](https://sourceforge.net/projects/quardcrt/files/)
 
-你应该根据你的平台下载对应的包。我们提供以下包：
+发布资源目前提供以下格式：
 
-- Windows: 
+- Windows:
     - `quardCRT_windows_Vxxx_x86_64_setup.exe`
     - `quardCRT_windows_Vxxx_x86_64_msvc_setup.exe`
-- MacOS: 
+- macOS:
     - `quardCRT_macos_Vxxx_x86_64.dmg`
     - `quardCRT_macos_Vxxx_arm64.dmg`
-- Linux: 
+- Linux:
     - `quardCRT_Linux_Vxxx_x86_64.AppImage`
     - `quardCRT_Linux_Vxxx_x86_64.deb`
-- Source code: 
+- 源代码:
     - `quardCRT_Vxxx_source.tar.gz`
     - `quardCRT_Vxxx_source.zip`
 
 ### Windows
 
-如果你使用 Windows，你可以下载 `quardCRT_windows_Vxxx_x86_64_setup.exe` 或 `quardCRT_windows_Vxxx_x86_64_msvc_setup.exe` 包。`quardCRT_windows_Vxxx_x86_64_setup.exe` 包是使用 MinGW 构建的，`quardCRT_windows_Vxxx_x86_64_msvc_setup.exe` 包是使用 MSVC 构建的。你可以根据你的需求选择包。如果你不在意自定义插件，你可以选择 `quardCRT_windows_Vxxx_x86_64_setup.exe` 包，它有更好的兼容性。
+Windows 下可选择 `quardCRT_windows_Vxxx_x86_64_setup.exe` 或 `quardCRT_windows_Vxxx_x86_64_msvc_setup.exe`。
+
+- `setup.exe`：MinGW 构建，适合普通用户，兼容性较好。
+- `msvc_setup.exe`：MSVC 构建，如果你需要与 MSVC 构建的插件或其他原生组件保持运行时兼容，建议使用此版本。
 
 #### 安装
 
-你可以通过双击包来安装 QuardCRT，然后按照提示完成安装。
+运行安装程序并按照向导完成安装：
 
 1. 选择语言，然后点击 `确定`。
 
@@ -61,7 +69,7 @@ QuardCRT 现在在以下应用商店提供。
 
 ![Windows安装包示例](./img/installation_6.png)
 
-4. 选择创建桌面快捷方式，然后点击 `下一步`。
+4. 选择是否创建桌面快捷方式，然后点击 `下一步`。
 
 ![Windows安装包示例](./img/installation_7.png)
 
@@ -73,38 +81,48 @@ QuardCRT 现在在以下应用商店提供。
 
 ![Windows安装包示例](./img/installation_9.png)
 
-### MacOS
+安装完成后，你可以从开始菜单或桌面快捷方式启动 quardCRT。
 
-如果你使用 MacOS，你可以下载 `quardCRT_macos_Vxxx_x86_64.dmg` 或 `quardCRT_macos_Vxxx_arm64.dmg` 包。`quardCRT_macos_Vxxx_x86_64.dmg` 包是使用 x86_64 构建的，`quardCRT_macos_Vxxx_arm64.dmg` 包是使用 arm64 构建的。如果你使用的是 Apple Silicon Mac，你应该选择 `quardCRT_macos_Vxxx_arm64.dmg` 包。
+### macOS
+
+Intel Mac 请下载 `quardCRT_macos_Vxxx_x86_64.dmg`，Apple Silicon Mac 请下载 `quardCRT_macos_Vxxx_arm64.dmg`。
 
 #### 安装
 
-你可以通过双击包来安装 QuardCRT，然后按照提示完成安装。
+打开 DMG 后，按常规 macOS 应用安装方式操作：
 
 1. 双击 `quardCRT` 图标。
 2. 将 `quardCRT` 图标拖到 `应用程序` 文件夹。
 
 ![dmg包安装示例](./img/installation_3.png)
 
-> 注意：因为我们目前发布的预构建二进制包没有经过 Apple 官方签名，所以当你第一次打开程序时，你可能会收到一个警告消息，提示程序来自未知开发者。如果你信任我们的程序，你可能需要打开终端并运行 `xattr -cr /Applications/quardCRT.app` 来移除隔离属性。但如果你不信任我们的程序，你不应该运行它。你可以选择自己编译程序。
+> 注意：当前提供的 macOS 预构建安装包尚未经过 Apple 官方签名。首次打开时，macOS 可能提示应用来自未识别的开发者。如果你信任该安装包，可以执行 `xattr -cr /Applications/quardCRT.app` 去掉隔离属性；如果你不信任它，请不要绕过系统警告，而应改为自行从源码构建。
 
 ### Linux
 
-如果你使用 Linux，你可以下载 `quardCRT_Linux_Vxxx_x86_64.AppImage` 或 `quardCRT_Linux_Vxxx_x86_64.deb` 包。`quardCRT_Linux_Vxxx_x86_64.AppImage` 包是一个 AppImage 包，`quardCRT_Linux_Vxxx_x86_64.deb` 包是一个 deb 包。你可以根据你的需求选择包。
+Linux 下可以在以下两种格式中选择：
+
+- `quardCRT_Linux_Vxxx_x86_64.AppImage`：便携式单可执行文件
+- `quardCRT_Linux_Vxxx_x86_64.deb`：适用于 Debian、Ubuntu、Deepin 等 Debian 系发行版
 
 #### 安装
 
-AppImage 包是一个便携包，你可以直接运行它而不需要安装。你可以运行以下命令使其可执行：
+- AppImage
+
+AppImage 不需要安装，赋予可执行权限后即可直接运行：
 
 ```bash
 chmod +x quardCRT_Linux_Vxxx_x86_64.AppImage
+./quardCRT_Linux_Vxxx_x86_64.AppImage
 ```
 
 - deb
 
-你可以通过双击包来安装 deb 包，然后按照提示完成安装。
+你可以使用图形化包管理器安装 Debian 包，也可以在命令行安装。
 
-1. 双击包。
+图形界面安装：
+
+1. 双击安装包。
 2. 点击 `安装软件包`。
 
 ![deb包安装示例1](./img/installation_1.png)
@@ -114,8 +132,25 @@ chmod +x quardCRT_Linux_Vxxx_x86_64.AppImage
 
 ![deb包安装示例2](./img/installation_2.png)
 
-或者你可以通过运行以下命令来安装 deb 包：
+命令行安装：
 
 ```bash
 sudo dpkg -i quardCRT_Linux_Vxxx_x86_64.deb
 ```
+
+如果系统报告依赖问题，可以改用包管理器处理，例如：
+
+```bash
+sudo apt install ./quardCRT_Linux_Vxxx_x86_64.deb
+```
+
+## 首次启动
+
+安装完成后，常见的第一步是：
+
+1. 打开 quardCRT。
+2. 如果发行包提示选择语言，则选择你需要的界面语言。
+3. 通过会话管理器或快速连接创建一个连接。
+4. 如果需要调整主题、字体、传输路径或高级设置，打开 `选项 > 全局选项`。
+
+接下来可以继续阅读 [使用指南](./usage.md)。

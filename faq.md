@@ -2,44 +2,74 @@
 
 # 常见问题
 
-## 通用
+本页回答关于许可证、源代码获取方式以及 quardCRT 如何存储敏感信息的常见问题。
 
-- quardCRT是免费软件吗？
-    - 是的，quardCRT是开源软件，遵循GPLv3协议。您可以在[GitHub](https://github.com/QQxiaoming/quardCRT)/[Gitee](https://gitee.com/QQxiaoming/quardCRT)获取完整可编译的源代码。
+## quardCRT 是免费且开源的吗？
 
-- quardCRT软件可以商用吗？
-    - quardCRT遵循GPLv3开源协议，您可以在遵循GPLv3协议的前提下自由使用quardCRT软件，包括商业用途（但请仔细阅读相关条款）。您可以在[此处](./license.md)阅读许可协议。
+是的。quardCRT 是遵循 GPLv3 协议发布的开源软件。
 
-- quardCRT软件为什么选择GPLv3协议，而不是其他开源协议？
-    - quardCRT软件本身依赖众多其他开源软件，为了尊重其他开源软件的许可协议，符合协议条款，因此quardCRT选择了GPLv3协议。
+你可以从以下地址获取完整源代码：
 
-- quardCRT软件是否安全？涉及密码等隐私信息是如何存储的？
-    - quardCRT软件是开源软件，您可以查看源代码，了解软件的运行机制。quardCRT软件不会存储密码等关键隐私信息到磁盘。
-    - quardCRT软件保存您的会话信息的原理是：将非密码信息（如主机名、端口号、用户名等）存储在配置文件中，配置文件路径可以阅读[配置](./configuration.md)页面了解。而密码信息是依赖开源软件[QtKeychain](https://github.com/frankosterfeld/qtkeychain)提供的系统密钥链服务，将密码信息提交给系统密钥链服务，由系统密钥链服务统一保存密码信息。密码的安全性取决于系统密钥链服务的安全性。通常情况下，受官方支持的Windows、macOS、Linux系统都提供了安全的密钥链服务，系统密钥链服务通常需要您登录系统时输入密码解锁（Windows）或者每次访问时验证登录密码或指纹（macOS）。但请注意，密码的安全性取决于系统密钥链服务，quardCRT软件本身不对密码安全性负责。
-    - 如果您仍然对密码安全性有疑虑，可以选择不保存密码，每次连接时输入密码。
+- [GitHub](https://github.com/QQxiaoming/quardCRT)
+- [Gitee](https://gitee.com/QQxiaoming/quardCRT)
 
-## 特定平台
+完整许可证文本请参见 [许可证页面](./license.md)。
 
-### Windows
+## quardCRT 可以商用吗？
 
-- quardCRT软件支持Windows 7/Windows XP吗？
-    - 不支持。quardCRT软件支持Windows 10及更高版本。这是因为quardCRT依赖Qt版本至少为6.2，Qt6.2不支持Windows 7/Windows XP。
+可以。只要你的使用方式符合 GPLv3 的许可条款，quardCRT 可以用于商业环境。
 
-- windows本地终端如何指定最新版本的PowerShell？
-    - quardCRT软件默认使用系统默认的PowerShell程序，如果您想使用最新版本的PowerShell，可以在[配置](./configuration.md)页面中，高级选项中，将“默认本地终端程序”设置为您的最新版本的PowerShell程序路径，这样您将使用指定的PowerShell程序并加载quardCRT自带的profile获得更好的体验。
+如果你计划重新分发 quardCRT、修改它，或者将它与其他软件一同打包，请务必先仔细阅读 GPLv3 的相关要求。
 
-- windows本地终端如何指定cmd程序？
-    - quardCRT软件使用PowerShell作为默认的本地终端程序，不支持传统的cmd。
+## 为什么 quardCRT 采用 GPLv3？
 
-### macOS
+quardCRT 依赖并整合了多个开源组件。选择 GPLv3 的目的是与这些上游项目的许可要求保持兼容，并尊重它们的许可证条款。
 
-- quardCRT软件支持macOS最低版本是多少？
-    - quardCRT软件依赖Qt版本至少为6.2，Qt6.2支持macOS 10.14及更高版本。如果您通过源码编译quardCRT软件，理论上可以获得相同的支持。但目前发布的预编译版本分别在macOS 12构建Intel版本和在macOS 14构建Apple Silicon版本，因此我们建议您使用macOS 14及更高版本。
+## quardCRT 安全吗？
 
-- 在macos上安装弹出“无法验证开发者”的提示，或安装包损坏，无法安装如何解决？
-    - 这是macOS的安全机制导致的。因为我们目前发布的预构建二进制包没有经过 Apple 官方签名，如果你信任我们的程序，你可能需要打开终端并运行 `xattr -cr /Applications/quardCRT.app` 来移除隔离属性。但如果你不信任我们的程序，你不应该运行它。你可以选择自己从源代码编译quardCRT软件，这样可以避免这个问题。
+quardCRT 是开源软件，这意味着你可以检查源码并验证它的行为。但和任何终端或远程访问工具一样，它的整体安全性也取决于：
 
-### Linux
+- 主机操作系统本身的安全性
+- 你连接的远端系统的安全性
+- 你使用的插件和脚本是否可靠
+- 你在本机上如何管理凭据和访问权限
 
-- quardCRT软件支持哪些Linux发行版？
-    - 如果从源码编译，理论上支持所有支持Qt6.2的Linux发行版。但目前发布的预编译版本是通过在Ubuntu 20.04 LTS上构建的，我们已经尽可能地打包了所有依赖项，但由于测试覆盖有限，我们无法保证在所有Linux发行版上都能正常运行。
+quardCRT 本身不会在普通配置文件中以明文形式保存密码。
+
+## 设置保存在哪里？
+
+诸如主机名、端口、用户名等常规应用设置和会话元数据，保存在 quardCRT 的配置文件中。
+
+你可以在 `选项 > 全局选项 > 高级` 中确认当前生效的配置文件路径。更多说明可参考 [配置页面](./configuration.md)。
+
+## 密码是如何保存的？
+
+已保存的密码与主配置文件分开处理。
+
+- 主机名、端口、用户名等非敏感信息保存在 quardCRT 设置文件中。
+- 密码及类似敏感信息依赖 [QtKeychain](https://github.com/frankosterfeld/qtkeychain)，并通过它接入操作系统提供的钥匙串或凭据存储服务。
+
+也就是说，quardCRT 会将密码存储委托给系统钥匙串，而不是直接写入普通配置文件。
+
+## 这在不同平台上意味着什么？
+
+具体行为取决于操作系统和桌面环境：
+
+- Windows 上，一般与当前登录用户账户绑定。
+- macOS 上，系统可能会在访问受保护的敏感信息时要求输入登录密码或进行生物识别确认。
+- Linux 上，行为取决于当前桌面环境或系统配置提供的钥匙串服务。
+
+因此，已保存密码的保护强度部分取决于你的系统钥匙串服务和本地机器本身的安全性。
+
+## 我可以不保存密码吗？
+
+可以。如果你不希望密码通过系统钥匙串保存，只需在会话配置中不要保存密码。这样每次连接时手动输入即可。
+
+## quardCRT 会把所有隐私数据都写到磁盘吗？
+
+不会。关键区别在于：
+
+- 常规会话元数据会进入配置文件
+- 敏感信息应通过系统钥匙串保存
+
+如果你在做部署审计，除了 quardCRT 配置文件，也建议一并检查平台钥匙串配置。

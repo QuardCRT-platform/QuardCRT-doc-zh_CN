@@ -4,6 +4,8 @@
 
 ## [[待发布](https://github.com/QQxiaoming/quardCRT)]
 
+## [[V0.6.0](https://github.com/QQxiaoming/quardCRT/releases/tag/V0.6.0)] - 2026-04-10
+
 - 修复主窗口错误的提升
 - 增加日志中允许添加自定义数据功能
 - 改进记录日志文件路径设置选项
@@ -11,6 +13,12 @@
 - 增加终端录制视频功能
 - Raw协议增加四种模式TCP Client、TCP Server、UDP Send、UDP Receive
 - 增加查看自身log窗口，用于quardCRT自身debug
+- 改进TFTP协议逻辑
+- 支持Emoji中旗帜符号的显示
+- 改进终端内容匹配功能
+- 修复Linux下在特定字符场景中终端卡死的问题
+- 修复Linux下串口驱动不支持Break时无法打开串口的问题
+- 修复浮动窗口关闭后部分资源未正确释放的问题 [#50](https://github.com/QQxiaoming/quardCRT/issues/50)
 
 ## [[V0.5.1](https://github.com/QQxiaoming/quardCRT/releases/tag/V0.5.1)] - 2024-09-26
 
