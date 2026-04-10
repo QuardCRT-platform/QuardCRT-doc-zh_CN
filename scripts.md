@@ -69,6 +69,20 @@ quardCRT 可以录制交互式终端操作，并生成一个可作为起点的 P
 
 如果你想清空这个列表，可以使用 `清空所有最近脚本`。
 
+## 仓库中的示例脚本
+
+这个仓库在 `test/scriptengine/` 目录下也提供了一些可以直接运行和修改的小型示例脚本。
+
+比较适合作为起点的示例包括：
+
+- `test/scriptengine/session/prompted_ssh2.py`：提示输入主机、端口、用户名和密码，然后通过 SSH2 连接
+- `test/scriptengine/session/prompted_telnet_login.py`：通过 Telnet 连接，并通过等待 login、password 和 shell 提示符来完成登录流程
+- `test/scriptengine/screen/send_command_and_capture.py`：向当前活动会话发送命令，并持续读取输出直到匹配到提示符
+- `test/scriptengine/screen/save_screen_to_file.py`：将当前可见屏幕文本保存到本地文件
+- `test/scriptengine/misc/repeat_command_logger.py`：重复执行同一条命令多次，并将每一轮输出保存到日志文件
+- `test/scriptengine/tab/send_to_all_sessions.py`：向当前活动标签组中的所有会话发送同一条命令
+- `test/scriptengine/filetransfer/zmodem_upload_dialog.py`：选择本地文件并启动一次 Zmodem 上传
+
 ## 第一个示例
 
 以下是一个最小示例，用于在消息框中显示 quardCRT 版本信息。
@@ -481,7 +495,7 @@ if tab.Number > 0:
         screen.SendKeys(["Ctrl", "Alt", "Del"])
         ```
 
-- `Screen.Screen_ReadString(strlist: list[str], timeout: int, bcaseInsensitive: bool) -> str`：读取文本数据，直到屏幕出现指定的文本列表。
+- `Screen.ReadString(strlist: list[str], timeout: int, bcaseInsensitive: bool) -> str`：读取文本数据，直到屏幕出现指定的文本列表。
     - 参数：
         - `strlist`：指定的文本列表。
         - `timeout`：超时时间。
@@ -490,7 +504,7 @@ if tab.Number > 0:
     - 示例：
 
         ```python
-        text = screen.Screen_ReadString(["Hello", "quardCRT"], 1000, False)
+        text = screen.ReadString(["Hello", "quardCRT"], 1000, False)
         ```
 
 - `Screen.WaitForCursor(row: int, col: int, timeout: int) -> bool`：等待光标移动到指定位置。（暂未实现）
